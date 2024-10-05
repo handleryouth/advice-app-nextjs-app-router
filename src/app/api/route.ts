@@ -1,17 +1,24 @@
-import { requestFunction } from "../services";
+import { AdviceResponse, requestFunction } from "../services";
 
 export async function POST() {
-  const result = await requestFunction("getAdvice", "baseUrl", {
+  let result: AdviceResponse = {
+    slip: {
+      advice:
+        "Consectetur ad ex dolor aliqua ut qui enim veniam do dolor cupidatat.",
+      id: 0,
+    },
+  };
+  await requestFunction("getAdvice", "baseUrl", {
     onSuccess(data) {
-      return data;
+      result = data as AdviceResponse;
     },
     onError() {
-      return new Error("Error");
+      console.log("Error");
     },
   });
 
-  if (result instanceof Error) {
-    return Response.json({ error: result.message }, { status: 500 });
+  if (result.slip.id === 0) {
+    return Response.json({ error: "error" }, { status: 500 });
   } else {
     return Response.json(result);
   }
