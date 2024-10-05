@@ -30,7 +30,7 @@ const AdviceCard = (advice: AdviceResponse) => {
     <Card className="bg-darkGrayishBlue max-w-96 mx-4">
       <CardBody className="p-8 text-center flex flex-col items-center gap-y-4">
         <Skeleton isLoaded={!loading} className="rounded-lg">
-          <p>Advice {adviceState.slip.id}</p>
+          <p>Advice #{adviceState.slip.id}</p>
         </Skeleton>
 
         <Skeleton isLoaded={!loading} className="rounded-lg">

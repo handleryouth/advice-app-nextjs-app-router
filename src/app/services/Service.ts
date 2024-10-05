@@ -40,11 +40,9 @@ export async function requestFunction<K>(
     })
     .then((res) => {
       onSuccess(res as K);
-      return res;
     })
     .catch((err) => {
       onError(err);
-      return err;
     })
     .finally(() => {
       onFinally?.();
